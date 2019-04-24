@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <link rel="stylesheet" media="screen" th:href="@{/css/display.css}"/>
+    <title>All Students </title>
+</head>
+<h3> Current Booking Slots </h3>
+<body onload = "onLoad();">
+<div class="mypanel"></div>
+<div class="container">
+    <h2> List of all Users </h2>
+    <table class="table1">
+      <tr>
+          <th style="color:#EBEBEB"> ID </th>
+          <th style="color:#EBEBEB"> Name </th>
+          <th style="color:#EBEBEB"> Lastname </th>
+          <th style="color:#EBEBEB"> Course </th>
+          <th style="color:#EBEBEB"> Email </th>
+          <th style="color:#EBEBEB"> Username </th>
+          <th style="color:#EBEBEB"> Strikes </th>
+          <th style="color:white"> Add Strikes </th>
+          <th style="color:white"> Remove Strikes </th>
+          <th style="color:white"> Edit </th>
+      </tr>
+      <tr th:each="student :${display}">
+          <td th:text="${student.id}"> </td>
+          <td th:text="${student.name}"> </td>
+          <td th:text="${student.lastname}"> </td>
+          <td th:text="${student.course}"> </td>
+          <td th:text="${student.email}"> </td>
+          <td th:text="${student.username}"> </td>
+          <td th:text="${student.strikes}"> </td>
+          <td> <a th:href="@{'http://localhost:8080/' + 'admin/' + ${student.id} + '/addstrike'}"  > Add Strike </a> </td>
+          <td> <a th:href="@{'http://localhost:8080/' + 'admin/' + ${student.id} + '/removestrike'}" > Remove Strike </a> </td>
+          <td> <a th:href="@{'http://localhost:8080/' + 'admin/' + ${student.id} + '/deleteuser'}" > Delete </a> </td>
+      </tr>
+    </table>
+    <br>
+    <a th:href="@{/admin}" Class="btnU btnU-small">Return Admin Home</a>
+</div>
+</body>
+</html>

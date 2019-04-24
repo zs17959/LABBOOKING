@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>seats sellection</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" media="screen" th:href="@{/css/manage_account.css}"/>
+
+    <script>
+
+    function sellectAll(){
+      var seatNOs  =document.getElementsByName("seatNO");
+      if(seatNOs.checked==true){
+        for(var i=0;i<seatNOs.length;i++){
+          seatNO[i].checked = true;
+        }}
+      else{
+        for(var i=0;i<seatNOs.length;i++)
+        seatNO[i].checked = false;}
+    }
+
+    </script>
+
+</head>
+<body>
+  <h3> Manage Account </h3>
+
+    <table class="table1" >
+    <tr>
+      <th align="center" style="width:100px;">Student Name</th>
+      <th align="center" style="width:100px;">Student id</th>
+      <th align="center" style="width:150px;">Strike Status</th>
+      <th align="center" style="width:80px;"> </th>
+      <th align="center" style="width:80px;"> </th>
+    </tr>
+    <tr>
+      <td align="center">John Conway</td>
+      <td>jc87263</td>
+      <td>0 </td>
+      <td align="center"><input class="button button2" type="button" name="seatNO" value="edit"></td>
+      <td align="center"><input type="button" name="seatNO" value="delete"></td>
+    </tr>
+    <tr>
+      <td align="center">Eric Liu</td>
+      <td>el09876</td>
+      <td>0 </td>
+      <td align="center"><input class="button button2" type="button" name="seatNO" value="edit"></td>
+      <td align="center"><input type="button" name="seatNO" value="delete"></td>
+    </tr>
+    <tr>
+      <td align="center">Chris Patt</td>
+      <td>cp3201</td>
+      <td>0 </td>
+      <td align="center"><input class="button button2" type="button" name="seatNO" value="edit"></td>
+      <td align="center"><input type="button" name="seatNO" value="delete"></td>
+    </tr>
+    <tr>
+      <td align="center">Chris Evans</td>
+      <td>ce53928</td>
+      <td>0 </td>
+      <td align="center"><input class="button button2" type="button" name="seatNO" value="edit"></td>
+      <td align="center"><input type="button" name="seatNO" value="delete"></td>
+    </tr>
+    <tr>
+      <td align="center">Scarlett Johansson</td>
+      <td>sc4321</td>
+      <td> 1</td>
+      <td align="center"><input class="button button2" type="button" name="seatNO" value="edit"></td>
+      <td align="center"><input type="button" name="seatNO" value="delete"></td>
+    </tr>
+    <tr>
+      <td align="center">Liam Niel</td>
+      <td>ln54632</td>
+      <td>3 </td>
+      <td align="center"><input class="button button2" type="button" name="seatNO" value="edit"></td>
+      <td align="center"><input type="button" name="seatNO" value="delete"></td>
+    </tr>
+    <tr>
+      <td align="center">Niel DeGrass Tyson</td>
+      <td>nt7653</td>
+      <td> 3 </td>
+      <td align="center"><input class="button button2" type="button" name="seatNO" value="edit"></td>
+      <td align="center"><input type="button" name="seatNO" value="delete"></td>
+    </tr>
+  </table><br>
+
+    <!--  <input type="button" value="SellectAll" onclick="sellectAll()" /> -->
+      <button type="submit" >Confirm</button> <br>
+
+</body>
+</html>

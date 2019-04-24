@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>University of Bristol</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" media="screen" th:href="@{/css/register.css}"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+<div class="head">
+    <a href="@{/loggedinindex}"><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" width="200";></a>
+    <a th:href="@{/loggedinindex}" style="color: #B01C2E; text-decoration:none;" title="Return to homepage" >LAB Booking System</a>
+</div>
+<h2>
+    Attendance Check
+</h2>
+<div class="attendacce">
+<form autocomplete="off" action="#" th:action="@{/bookings/attendance}" th:object="${attendance}" method="post" class="form-horizontal" role="form">
+<b>Tap Your UCard </b>
+
+<input type="text" th:field="*{UCARD}" placeholder="Please tap your UCARD here only!" class="form-control" required/>
+    <div class="agree" style="text-align: center; width: 100%">
+        <strong>Do not Type your ID (e.g. ab12345) as input, it will not be recorded. Please Tap your UCARD. </strong><br>
+    </div>
+    <p><button type="submit" style="width: 18%" class="btnU btnU-small">Attended</button>&#12288;&#12288;<a th:href="@{/loggedinindex}" Class="btnU btnU-small">Return to Home</a></p>
+</form>
+
+</div>
+<br>
+
+</body>

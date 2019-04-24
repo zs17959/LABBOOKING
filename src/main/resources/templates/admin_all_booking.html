@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" media="screen" th:href="@{/css/display.css}"/>
+    <title>All Bookings </title>
+</head>
+<h2> All Booking Slots </h2>
+<a th:href="@{/admin}" Class="btnU btnU-small">Return Admin Home</a>
+<br>
+<br>
+<br>
+<body onload = "onLoad();">
+<div class="mypanel"></div>
+<div class="container">
+    <table class="table1">
+        <tr>
+            <th style="color:#EBEBEB"> Booking Reference </th>
+            <th style="color:#EBEBEB"> student </th>
+            <th style="color:#EBEBEB"> seatNo </th>
+            <!--<th style="color:#EBEBEB"> date </th>-->
+            <th style="color:#EBEBEB"> Start Time (am) </th>
+            <th style="color:#EBEBEB"> End Time (am/pm)</th>
+            <th style="color:#EBEBEB"> Length </th>
+            <th style="color:#EBEBEB"> Prototyping Board </th>
+            <th style="color:#EBEBEB"> Solid Core Wire </th>
+            <th style="color:#EBEBEB"> Wire Cutter </th>
+            <th style="color:#EBEBEB"> Resistors </th>
+            <th style="color:#EBEBEB"> Capacitors </th>
+            <th style="color:#EBEBEB"> TTi LCR400 Bridge </th>
+            <th style="color:#EBEBEB"> BNC "T" Piece </th>
+            <th style="color:#EBEBEB"> Oscilloscope Probes </th>
+            <th style="color:#EBEBEB"> Active 8 Channel Logic Probe </th>
+            <th style="color:#EBEBEB"> Waveform Generator : BNC ® Croc Lead </th>
+            <th style="color:#EBEBEB"> Waveform Generator : BNC ® BNC Lead</th>
+            <th style="color:#EBEBEB"> NGE 100 Triple Output Power Supply </th>
+            <th style="color:#EBEBEB"> HMC 8012 Digital Multimeter </th>
+            <th style="color:#EBEBEB"> Trim Tool </th>
+            <th style="color:#EBEBEB"> Attendance </th>
+            <th style="color: white"> Notes </th>
+
+            <!--<th style="color: white"> Edit </th>-->
+
+        </tr>
+        <tr th:each="booking :${admin_all_booking}">
+            <td th:text="${booking.id}"> </td>
+            <td th:text="${booking.student}"> </td>
+            <td th:text="${booking.seatNo}"> </td>
+            <td th:text="${booking.startTime + ':00' }"> </td>
+            <td th:text="${booking.endTime} + ':00' "></td>
+            <td th:text="${booking.length + ' hr'}"> </td>
+            <td th:text="${booking.prototyping_board}"> </td>
+            <td th:text="${booking.solidCoreWire}"> </td>
+            <td th:text="${booking.wire_strippers}"> </td>
+            <td th:text="${booking.resistors}"> </td>
+            <td th:text="${booking.capacitors}"> </td>
+            <td th:text="${booking.lcr400_bridge}"> </td>
+            <td th:text="${booking.bnc_Tpiece}"> </td>
+            <td th:text="${booking.rsop}"> </td>
+            <td th:text="${booking.active8}"> </td>
+            <td th:text="${booking.bnc_croclead}"> </td>
+            <td th:text="${booking.bnc_lead}"> </td>
+            <td th:text="${booking.power_supp}"> </td>
+            <td th:text="${booking.rs_4mmplug}"> </td>
+            <td th:text="${booking.oscilloscope_trim}"> </td>
+            <td th:text="${booking.attendance}"> </td>
+            <td th:text="${booking.notes}"></td>
+            <td> <a th:href="@{'http://localhost:8080/bookings/' + ${booking.id} + '/dlt'}" > Delete </a> </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

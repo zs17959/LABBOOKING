@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Login</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" media="screen" th:href="@{/css/login.css}"/>
+</head>
+
+<body>
+    <div class="head">
+        <a href="http://www.bristol.ac.uk"><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" width="200";></a>
+        <a th:href="@{/}" style="color: #B01C2E; text-decoration:none;" title="Return to homepage" >LAB Booking System</a>
+    </div>
+
+    <form th:action="@{/login}" method="POST">
+        <div class="container">
+            <div class="input">
+                <h2>Login</h2>
+                <p>Login to use Lab Booking System</p>
+                <hr>
+
+                <div style="float:left;"><b>User Name</b></div>
+                <input type="text" id="username" name="username" required/>
+
+                <div style="float:left;"><b>Password</b></div>
+                <input type="password" id="password" name="password" required/>
+
+                <input type="checkbox" checked="checked" name="remember"> Remember me &emsp;&emsp;&emsp;&emsp;
+                <span class="psw">Forgot <a href="#">password?</a></span>
+
+            </div>
+            <div align="center" th:if="${param.error}">
+                <p style="font-size: 20; color: #FF1C19;">Username or Password invalid, please verify</p>
+            </div>
+
+            <p><button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Login"></button></p>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Complete</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit Complete</h1>
+    <p th:text="'First name: ' + ${student.name}" />
+    <p th:text="'Last name: ' + ${student.lastname}" />
+    <p th:text="'Course: ' + ${student.course}" />
+    <p th:text="'Email: ' + ${student.email}" />
+
+    <a th:href="@{/loggedinindex}" Class="btnU btnU-large">Return to Home</a>
+</body>
+</html>

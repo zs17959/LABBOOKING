@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit User</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" media="screen" th:href="@{/css/edit_users.css}"/>
+</head>
+<body>
+	<h1>Edit User</h1>
+    <form action="#" th:action="@{/edituserpost}" th:object="${student}" method="post">
+        <!--<p th:text="'ID: ' + ${current.id}" />-->
+
+        <!--<p>   ID :-->
+            <input type="hidden" name="id" th:value="${current.id}" />
+        <!--</p>-->
+        <!--<p> Course : -->
+
+
+
+      <p>First Name: <input type="text" name="name" th:value="${current.name}" /></p>
+        <div th:if="${#fields.hasErrors('name')}"
+             th:each="e : ${#fields.errors('name')}" th:text="#{${e}}" >
+        </div>
+
+      <p>Last Name: <br> <br> <input type="text" name="lastname" th:value="${current.lastname}"/></p>
+        <div th:if="${#fields.hasErrors('lastname')}"
+             th:each="e : ${#fields.errors('lastname')}" th:text="#{${e}}" >
+        </div>
+
+
+      <p>UCARD: <br> <br> <input type="text" name="ucard" th:value="${current.ucard}"/></p>
+        <div th:if="${#fields.hasErrors('ucard')}"
+             th:each="e : ${#fields.errors('ucard')}" th:text="#{${e}}" >
+        </div>
+
+        <p> Email: <br> <br> <input type="text" name="email" th:value="${current.email}"/></p>
+        <div th:if="${#fields.hasErrors('email')}"
+             th:each="e : ${#fields.errors('email')}" th:text="#{${e}}" >
+        </div>
+
+      <p><input type="submit" value="Submit" />
+
+    </form>
+    </div>
+    <a th:href="@{/loggedinindex}" Class="btnU btnU-small">Return to Home</a>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" media="screen" th:href="@{/css/register.css}"/>
+</head>
+<body>
+<div class="head">
+<img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" width="200";>
+    LAB Booking System
+</div>
+
+<form action="#" th:action="@{/register}" th:object="${student}" method="post">
+    <div class="container">
+        <div class="input">
+            <h2>Sign Up</h2>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+            <label for="name"><b>First Name</b></label>
+            <input type="text" id="name" th:field="*{name}" required>
+            <label for="lastname"><b>Last Name</b></label>
+            <input type="text" id="lastname" th:field="*{lastname}" required>
+            <label for="course"><b>Course</b></label>
+            <input type="text" id="course" th:field="*{course}" required>
+            <label for="email"><b>Email</b></label>
+            <input type="text" id="email" th:field="*{email}" required>
+            <label for="username"><b>Username</b></label>
+            <input type="text" id="username" th:field="*{username}" required>
+            <label for="password"><b>Password</b></label>
+            <input type="password" id="password" th:field="*{password}" required>
+        </div>
+        <div class="agree">
+            1. Report to your supervisor incase of emergency in equipment.<br>
+            2. You are responsible for the safety of your own and others while using the lab.<br>
+            3. It is against the rule for you to book the seats for others.<br>
+            4. Any damages to the equipment will be reported to the faculty in your name.<br>
+            5. You are responsible for your own bookings of seats in the lab, if cancellation was not made in specific time of agreement, you will receive a strike.<br>
+            <strong>Three strikes and your account will be blacklisted.</strong><br>
+            Please Contact Mr. Richard Walker for removing your name from the black list.
+        </div>
+        <p><input type="submit" value="Register" /> <input type="reset" value="Reset" /></p>
+
+    </div>
+</form>
+</body>
+</html>

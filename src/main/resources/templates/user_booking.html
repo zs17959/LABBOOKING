@@ -1,0 +1,65 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<html>-->
+<!--<head>-->
+    <!--<link rel="stylesheet" media="screen" th:href="@{/css/display.css}"/>-->
+    <!--<title>All Students </title>-->
+<!--</head>-->
+<!--<h3> Current Booking Slots </h3>-->
+<!--<body onload = "onLoad();">-->
+<!--<div class="mypanel"></div>-->
+<!--<div class="container">-->
+    <!--<h2> List of all Users </h2>-->
+    <!--<table class="student">-->
+        <!--<tr>-->
+            <!--<th> Booking Number/Reference </th>-->
+            <!--<th> student </th>-->
+            <!--<th> seatNo </th>-->
+            <!--<th> dateAndTime </th>-->
+            <!--<th> Length </th>-->
+            <!--<th> Attendance </th>-->
+            <!--<th> Prototyping Board </th>-->
+            <!--<th> Solid Core Wire - 1/0.6mm </th>-->
+            <!--<th> Wire Strippers/Cutters </th>-->
+            <!--<th> Resistors </th>-->
+            <!--<th> Capacitors </th>-->
+            <!--<th> TTi LCR400 Bridge </th>-->
+            <!--<th> BNC "T" Piece </th>-->
+            <!--<th> Rohde & Schwarz RT-ZP03 Oscilloscope Probes </th>-->
+            <!--<th> Rohde & Schwarz RT-ZL03 Active 8 Channel Logic Probe </th>-->
+            <!--<th> BK Precision 4054B Dual Channel 30Mhz Function/Arbitrary Waveform Generator : BNC ® Croc Lead </th>-->
+            <!--<th> BK Precision 4054B Dual Channel 30Mhz Function/Arbitrary Waveform Generator : BNC ® BNC Lead</th>-->
+            <!--<th> Rohde & Schwarz NGE 100 Triple Output Power Supply </th>-->
+            <!--<th> Rohde & Schwarz HMC 8012 Digital Multimeter : 4mm plug ® Croc Lead</th>-->
+            <!--<th> Oscilloscope Trim Tool </th>-->
+
+
+        <!--</tr>-->
+        <!--<tr th:each="booking :${userallbooking}">-->
+            <!--<td th:text="${booking.id}"> </td>-->
+            <!--<td th:text="${booking.student}"> </td>-->
+            <!--<td th:text="${booking.seatNo}"> </td>-->
+            <!--<td th:text="${booking.dateAndTime}"> </td>-->
+            <!--<td th:text="${booking.length}"> </td>-->
+            <!--<td th:text="${booking.attendance}"> </td>-->
+            <!--<td th:text="${booking.prototyping_board}"> </td>-->
+            <!--<td th:text="${booking.solidCoreWire}"> </td>-->
+            <!--<td th:text="${booking.wire_strippers}"> </td>-->
+            <!--<td th:text="${booking.resistors}"> </td>-->
+            <!--<td th:text="${booking.capacitors}"> </td>-->
+            <!--<td th:text="${booking.lcr400_bridge}"> </td>-->
+            <!--<td th:text="${booking.bnc_Tpiece}"> </td>-->
+            <!--<td th:text="${booking.rsop}"> </td>-->
+            <!--<td th:text="${booking.active8}"> </td>-->
+            <!--<td th:text="${booking.bnc_croclead}"> </td>-->
+            <!--<td th:text="${booking.bnc_lead}"> </td>-->
+            <!--<td th:text="${booking.power_supp}"> </td>-->
+            <!--<td th:text="${booking.rs_4mmplug}"> </td>-->
+            <!--<td th:text="${booking.oscilloscope_trim}"> </td>-->
+
+            <!--<td> <a th:href="@{'http://localhost:8080/bookings/' + ${booking.id} + '/delete'}" > Delete </a> </td>-->
+        <!--</tr>-->
+    <!--</table>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Registration</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" media="screen" th:href="@{/css/register.css}"/>
+</head>
+
+<body>
+	<div class="head">
+		<a href="http://www.bristol.ac.uk"><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" width="200";></a>
+	    <a th:href="@{/}" style="color: #B01C2E; text-decoration:none;" title="Return to homepage" >LAB Booking System</a>
+	</div>
+	<form autocomplete="off" action="#" th:action="@{/registration}" th:object="${student}" method="post" class="form-horizontal" role="form">
+		<div class="container">
+        <div class="input">
+            <h2>Sign Up</h2>
+			<span th:utext="${successMessage}"></span>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+				<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="validation-message"></label>
+				<label th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" class="validation-message"></label>
+				<label th:if="${#fields.hasErrors('course')}" th:errors="*{course}" class="validation-message"></label>
+				<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></label>
+				<label th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="validation-message"></label>
+				<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validation-message"></label>
+				<label th:if="${#fields.hasErrors('ucard')}" th:errors="*{ucard}" class="validation-message"></label>
+				<br>
+			    <b>First Name</b>
+				<input type="text" th:field="*{name}" class="form-control" required/>
+
+                <b>Last Name</b>
+				<input type="text" th:field="*{lastname}"  class="form-control" required/>
+
+                <b>Course</b>
+				<br>
+				<select th:field="*{course}">
+	              <option th:value="EE" th:text="EE"></option>
+	              <option th:value="CSEE" th:text="CSEE"></option>
+	              <option th:value="CS" th:text="CS"></option>
+	            </select>
+				<br>
+				<br>
+				<b>  </b>
+
+
+                <b>Email </b>
+				<input type="text" th:field="*{email}" placeholder="use bristol email only" class="form-control" required/>
+
+                <b>User Name</b>
+				<input type="text" th:field="*{username}" class="form-control" required/>
+
+                <b>Password </b>
+				<input type="password" th:field="*{password}" placeholder="do NOT use your bristol password" class="form-control" required/>
+
+                <b>Ucard </b>
+				<input type="text" th:field="*{ucard}" placeholder="enter 0 if not in the lab with the scanner" class="form-control" required/>
+        </div>
+        <div class="agree">
+            1. Report to your supervisor incase of emergency in equipment.<br>
+            2. You are responsible for the safety of your own and others while using the lab.<br>
+            3. It is against the rule for you to book the seats for others.<br>
+            4. Any damages to the equipment will be reported to the faculty in your name.<br>
+            5. You are responsible for your own bookings of seats in the lab, if cancellation was not made in specific time of agreement, you will receive a strike.<br>
+            <strong>Three strikes and your account will be blacklisted.</strong><br>
+            Please Contact Mr. Richard Walker for removing your name from the black list.
+        </div>
+        <p><button type="submit" class="btn btn-primary btn-block">Register</button></p>
+    </div>
+</form>
+</body>
+</html>
