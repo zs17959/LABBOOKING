@@ -7,7 +7,7 @@
     <title>All Bookings </title>
 </head>
 <h2> All Booking Slots </h2>
-<a th:href="@{/admin}" Class="btnU btnU-small">Return Admin Home</a>
+<a th:href="@{/admin}" id = "return_to_admin_home_test" Class="btnU btnU-small">Return Admin Home</a>
 <br>
 <br>
 <br>
@@ -39,6 +39,7 @@
             <th style="color:#EBEBEB"> Trim Tool </th>
             <th style="color:#EBEBEB"> Attendance </th>
             <th style="color: white"> Notes </th>
+            <th style="color: white"> Edit </th>
 
             <!--<th style="color: white"> Edit </th>-->
 
@@ -66,7 +67,7 @@
             <td th:text="${booking.oscilloscope_trim}"> </td>
             <td th:text="${booking.attendance}"> </td>
             <td th:text="${booking.notes}"></td>
-            <td> <a th:href="@{'http://localhost:8080/bookings/' + ${booking.id} + '/dlt'}" > Delete </a> </td>
+            <td> <a th:href="@{'http://129.213.98.201/bookings/' + ${booking.id} + '/dlt'}" > Delete </a> </td>
         </tr>
     </table>
 </div>

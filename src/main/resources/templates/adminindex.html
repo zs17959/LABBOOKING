@@ -28,19 +28,19 @@ p{
 <div class="w3-top">
   <div class="w3-row w3-large w3-light-grey">
     <div class="w3-col s3">
-      <a th:href="@{display}" class="w3-button w3-block">Display All Students </a>
+      <a th:href="@{display}" id = "display_test" class="w3-button w3-block">Display All Students </a>
     </div>
     <div class="w3-col s3">
-      <a th:href="@{/edituser}" class="w3-button w3-block">Edit User</a>
+      <a th:href="@{/edituser}" id = "edituser_test" class="w3-button w3-block">Edit User</a>
     </div>
     <div class="w3-col s3">
-      <a th:href="@{/admin/book}" class="w3-button w3-block">Admin Booking</a>
+      <a th:href="@{/admin/book}" id = "book_test" class="w3-button w3-block">Admin Booking</a>
     </div>
     <div class="w3-col s3">
-      <a th:href="@{/bookings/admin_all_booking}" class="w3-button w3-block">Display All Bookings</a>
+      <a th:href="@{/bookings/admin_all_booking}" id = "admin_all_booking_test" class="w3-button w3-block">Display All Bookings</a>
     </div>
     <div class="w3-col s3">
-      <a th:href="@{/logout}" class="w3-button w3-block">Logout</a>
+      <a th:href="@{/logout}" id = "logout_test" class="w3-button w3-block">Logout</a>
     </div>
   </div>
 </div>
@@ -57,7 +57,7 @@ p{
     <br>
     <h1 align="center"> Electrical and Electronics Engineering Lab Booking System</h1>
     <h2 align="center"> Admin Home</h2>
-    <a th:href="@{/loggedinindex}" Class="btnU btnU-large" >Return User Home</a>
+    <a th:href="@{/loggedinindex}" id = "return_to_home_test" Class="btnU btnU-large" >Return User Home</a>
   </div>
 
 

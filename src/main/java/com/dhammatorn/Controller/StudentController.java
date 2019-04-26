@@ -216,6 +216,7 @@ public class StudentController {
                 strikes = strikes + 1;
                 student.setStrikes(strikes);
                 studentService.updateStudentStrikesByID(student);
+
 //                return "Strike Added":
                 return new RedirectView("/display");
             }

@@ -77,7 +77,8 @@ public class AdminbookController {
             String day = tempbooking.getDay();
             String[] all_seats = tempbooking.getSeatNo();
 //            ArrayList<String> all_seats = tempbooking.getSeatNum();
-            for(String each_seats : all_seats) {
+            for(String each_seats : all_seats)
+            {
                 Booking booking = new Booking();
 //                String day = tempbooking.getDay();
                 ZoneId zone = ZoneId.systemDefault();
@@ -90,20 +91,30 @@ public class AdminbookController {
 
                 LocalDateTime startTime = LocalDateTime.now(zone);
                 LocalDateTime finalEndTime = LocalDateTime.now(zone);
-                for(int i = 0 ; i < 7; i++){
+
+                for(int i = 0 ; i < 7; i++)
+                {
                     DayOfWeek currentDay = now.getDayOfWeek();
                     if(currentDay.equals(userBookedDay)) startTime = now;
                     else now = now.plusDays(1);
                 }
 
-                for(int i = 0; i < 24; i++){
+                for(int i = 0; i < 24; i++)
+                {
                     int starthour = startTime.getHour();
                     if(starthour != tempbooking.getStartTime()) startTime = startTime.plusHours(1);
                 }
 
                 finalEndTime = startTime.plusHours(length);
+                finalEndTime = finalEndTime.withNano(0);
+                finalEndTime = finalEndTime.withMinute(0);
+                finalEndTime = finalEndTime.withSecond(0);
 
-                booking.setStartTime(now);
+                startTime =  startTime.withNano(0);
+                startTime = startTime.withMinute(0);
+                startTime = startTime.withSecond(0);
+
+                booking.setStartTime(startTime);
                 booking.setEndTime(finalEndTime);
                 booking.setLength(length);
                 booking.setSeatNo(each_seats);

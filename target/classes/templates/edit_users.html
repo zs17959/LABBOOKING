@@ -17,18 +17,18 @@
 
 
 
-      <p>First Name: <input type="text" name="name" th:value="${current.name}" /></p>
+      <p>First Name: <input type="text" id = "name" name="name" th:value="${current.name}" /></p>
         <div th:if="${#fields.hasErrors('name')}"
              th:each="e : ${#fields.errors('name')}" th:text="#{${e}}" >
         </div>
 
-      <p>Last Name: <br> <br> <input type="text" name="lastname" th:value="${current.lastname}"/></p>
+      <p>Last Name: <br> <br> <input type="text" id="lastname" name="lastname" th:value="${current.lastname}"/></p>
         <div th:if="${#fields.hasErrors('lastname')}"
              th:each="e : ${#fields.errors('lastname')}" th:text="#{${e}}" >
         </div>
 
 
-      <p>UCARD: <br> <br> <input type="text" name="ucard" th:value="${current.ucard}"/></p>
+      <p>UCARD: <br> <br> <input type="text" id="UCARD" name="ucard" th:value="${current.ucard}"/></p>
         <div th:if="${#fields.hasErrors('ucard')}"
              th:each="e : ${#fields.errors('ucard')}" th:text="#{${e}}" >
         </div>
@@ -38,10 +38,10 @@
              th:each="e : ${#fields.errors('email')}" th:text="#{${e}}" >
         </div>
 
-      <p><input type="submit" value="Submit" />
+      <p><input type="submit" value="Submit" id="submit" />
 
     </form>
     </div>
-    <a th:href="@{/loggedinindex}" Class="btnU btnU-small">Return to Home</a>
+    <a th:href="@{/loggedinindex}" id = "return_to_home_test" Class="btnU btnU-small">Return to Home</a>
 </body>
 </html>

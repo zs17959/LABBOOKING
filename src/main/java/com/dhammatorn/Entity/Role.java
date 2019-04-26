@@ -23,4 +23,12 @@ public class Role {
     public String getRole(){
         return this.role;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

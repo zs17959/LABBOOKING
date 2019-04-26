@@ -7,7 +7,7 @@
     <title>All Your Bookings </title>
 </head>
 <h2> All Your Bookings </h2>
-<a th:href="@{/loggedinindex}" Class="btnU btnU-small">Return to Home</a>
+<a th:href="@{/loggedinindex}" id = "return_to_home_test" Class="btnU btnU-small">Return to Home</a>
 <br>
 <br>
 <br>
@@ -67,7 +67,7 @@
             <td th:text="${booking.oscilloscope_trim}"> </td>
             <td th:text="${booking.notes}"> </td>
 
-            <td> <a th:href="@{'http://localhost:8080/bookings/' + ${booking.id} + '/delete'}" > Delete </a> </td>
+            <td> <a th:href="@{'http://129.213.98.201/bookings/' + ${booking.id} + '/delete'}" > Delete </a> </td>
         </tr>
     </table>
 </div>

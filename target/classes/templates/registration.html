@@ -10,7 +10,7 @@
 <body>
 	<div class="head">
 		<a href="http://www.bristol.ac.uk"><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" width="200";></a>
-	    <a th:href="@{/}" style="color: #B01C2E; text-decoration:none;" title="Return to homepage" >LAB Booking System</a>
+	    <a th:href="@{/}" style="color: #B01C2E; text-decoration:none;" id = "return_to_home_test" title="Return to homepage" >LAB Booking System</a>
 	</div>
 	<form autocomplete="off" action="#" th:action="@{/registration}" th:object="${student}" method="post" class="form-horizontal" role="form">
 		<div class="container">

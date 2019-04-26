@@ -31,13 +31,13 @@
           <td th:text="${student.email}"> </td>
           <td th:text="${student.username}"> </td>
           <td th:text="${student.strikes}"> </td>
-          <td> <a th:href="@{'http://localhost:8080/' + 'admin/' + ${student.id} + '/addstrike'}"  > Add Strike </a> </td>
-          <td> <a th:href="@{'http://localhost:8080/' + 'admin/' + ${student.id} + '/removestrike'}" > Remove Strike </a> </td>
-          <td> <a th:href="@{'http://localhost:8080/' + 'admin/' + ${student.id} + '/deleteuser'}" > Delete </a> </td>
+          <td> <a th:href="@{'http://129.213.98.201/' + 'admin/' + ${student.id} + '/addstrike'}"  > Add Strike </a> </td>
+          <td> <a th:href="@{'http://129.213.98.201/' + 'admin/' + ${student.id} + '/removestrike'}" > Remove Strike </a> </td>
+          <td> <a th:href="@{'http://129.213.98.201/' + 'admin/' + ${student.id} + '/deleteuser'}" > Delete </a> </td>
       </tr>
     </table>
     <br>
-    <a th:href="@{/admin}" Class="btnU btnU-small">Return Admin Home</a>
+    <a th:href="@{/admin}" id = "return_to_admin_home_test" Class="btnU btnU-small">Return Admin Home</a>
 </div>
 </body>
 </html>

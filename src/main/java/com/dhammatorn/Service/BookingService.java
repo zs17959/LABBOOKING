@@ -151,8 +151,6 @@ public class BookingService {
         bookingRepository.deleteById(id);
     }
 
-
-
     //function to get Student by ID
     //copy this to service to connect them
     public Optional<Booking> getBookingById(int id){

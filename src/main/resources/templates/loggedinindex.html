@@ -28,19 +28,19 @@ p{
 <div class="w3-top">
   <div class="w3-row w3-large w3-light-grey">
     <div class="w3-col s3">
-      <a th:href="@{/edituser}" class="w3-button w3-block">Edit User</a>
+      <a th:href="@{/edituser}" id = "edituser_test" class="w3-button w3-block">Edit User</a>
     </div>
     <div class="w3-col s3">
-      <a th:href="@{/bookings/book}" class="w3-button w3-block">Seat Booking</a>
+      <a th:href="@{/bookings/book}" id = "book_test" class="w3-button w3-block">Seat Booking</a>
     </div>
     <div class="w3-col s3">
-      <a th:href="@{/bookings/userallbooking}" class="w3-button w3-block">My Booking</a>
+      <a th:href="@{/bookings/userallbooking}" id = "userallbooking_test" class="w3-button w3-block">My Booking</a>
     </div>
     <div class="w3-col s3">
-      <a th:href="@{/bookings/attendance}" class="w3-button w3-block">Attendance</a>
+      <a th:href="@{/bookings/attendance}" id = "attendance_test" class="w3-button w3-block">Attendance</a>
     </div>
     <div class="w3-col s3">
-      <a th:href="@{/logout}" class="w3-button w3-block">Logout</a>
+      <a th:href="@{/logout}" id = "logout_test" class="w3-button w3-block">Logout</a>
     </div>
 
   </div>
@@ -97,7 +97,7 @@ p{
     </div>
 
     <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
-      <h3><a th:href="@{/bookings/book}" style="text-decoration:none;">Booking a slot</a></h3>
+      <h3><a th:href="@{/bookings/book}" id = "book test" style="text-decoration:none;">Booking a slot</a></h3>
       <p>Each student is allowed a maximum of 3 hours slot booking each time.</p>
     </div>
 

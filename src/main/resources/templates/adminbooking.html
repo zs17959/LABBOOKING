@@ -9,41 +9,41 @@
 <body>
 <div class="head">
     <a href="http://www.bristol.ac.uk"><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" width="200";></a>
-    <a th:href="@{/admin}" style="color: #B01C2E; text-decoration:none;" title="Return to homepage" >LAB Booking System</a>
+    <a th:href="@{/admin}" id = "return_to_admin_home_test" style="color: #B01C2E; text-decoration:none;" title="Return to homepage" >LAB Booking System</a>
 </div>
 
   <h3> Time slot </h3>
   <form action="#" th:action="@{/admin/book}" th:object="${adminbookinfo}" method="post">
     Start time:
-    <select th:field="*{startTime}">
-      <option th:value="9" th:text="9"></option>
-      <option th:value="10" th:text="10"></option>
-      <option th:value="11" th:text="11"></option>
-      <option th:value="12" th:text="12"></option>
-      <option th:value="13" th:text="13"></option>
-      <option th:value="14" th:text="14"></option>
-      <option th:value="15" th:text="15"></option>
-      <option th:value="16" th:text="16"></option>
+    <select th:field="*{startTime}" id="start_time">
+      <option th:value="9" id="admin_s9" th:text="9"></option>
+      <option th:value="10" id="admin_s10" th:text="10"></option>
+      <option th:value="11" id="admin_s11" th:text="11"></option>
+      <option th:value="12" id="admin_s12" th:text="12"></option>
+      <option th:value="13" id="admin_s13" th:text="13"></option>
+      <option th:value="14" id="admin_s14" th:text="14"></option>
+      <option th:value="15" id="admin_s15" th:text="15"></option>
+      <option th:value="16" id="admin_s16" th:text="16"></option>
     </select> :00
     to End time:
-    <select th:field="*{endTime}">
-      <option th:value="10" th:text="10"></option>
-      <option th:value="11" th:text="11"></option>
-      <option th:value="12" th:text="12"></option>
-      <option th:value="13" th:text="13"></option>
-      <option th:value="14" th:text="14"></option>
-      <option th:value="15" th:text="15"></option>
-      <option th:value="16" th:text="16"></option>
-      <option th:value="17" th:text="17"></option>
+    <select th:field="*{endTime}" id="end_time">
+      <option th:value="10" id="admin_e10" th:text="10"></option>
+      <option th:value="11" id="admin_e11" th:text="11"></option>
+      <option th:value="12" id="admin_e12" th:text="12"></option>
+      <option th:value="13" id="admin_e13" th:text="13"></option>
+      <option th:value="14" id="admin_e14" th:text="14"></option>
+      <option th:value="15" id="admin_e15" th:text="15"></option>
+      <option th:value="16" id="admin_e16" th:text="16"></option>
+      <option th:value="17" id="admin_e17" th:text="17"></option>
     </select> :00
 
     <br><br>
     <p class="error" th:if="${#fields.hasErrors('day')}" th:errors="*{day}">Name Error</p>
-    <input type="radio" th:field="*{day}" th:value="MON" >Monday
-    <input type="radio" th:field="*{day}" th:value="TUE" >Tuesday
-    <input type="radio" th:field="*{day}" th:value="WED" >Wednesday
-    <input type="radio" th:field="*{day}" th:value="THU" >Thursday
-    <input type="radio" th:field="*{day}" th:value="FRI" >Friday
+    <input type="radio" id="admin_d1" th:field="*{day}" th:value="MON" >Monday
+    <input type="radio" id="admin_d2" th:field="*{day}" th:value="TUE" >Tuesday
+    <input type="radio" id="admin_d3" th:field="*{day}" th:value="WED" >Wednesday
+    <input type="radio" id="admin_d4" th:field="*{day}" th:value="THU" >Thursday
+    <input type="radio" id="admin_d5" th:field="*{day}" th:value="FRI" >Friday
     <br><br>
 
 
@@ -81,7 +81,7 @@
       <tr>
         <th align="center" style="width:100px;">Seat</th>
         <th align="center" style="width:150px;">Status</th>
-        <th align="center" style="width:80px;" >Select <input type="checkbox" id="sellect_All" /></th>
+        <th align="center" style="width:80px;" >Select <input type="checkbox" id="select_All"/></th>
       </tr>
       </thead>
 
@@ -89,22 +89,22 @@
       <tr>
         <td align="center">A1</td>
         <td>Available</td>
-        <td align="center"><input id="foo1" name="foo" type="checkbox" th:field="*{seatNo}" th:value="A1"></td>
+        <td align="center"><input id="admin_A1" name="foo" type="checkbox" th:field="*{seatNo}" th:value="A1"></td>
       </tr>
       <tr>
         <td align="center">A2</td>
         <td>Available</td>
-        <td align="center"><input id="foo2" name="foo" type="checkbox" th:field="*{seatNo}" th:value="A2"></td>
+        <td align="center"><input id="A2" name="foo" type="checkbox" th:field="*{seatNo}" th:value="A2"></td>
       </tr>
       <tr>
         <td align="center">A3</td>
         <td>Available</td>
-        <td align="center"><input id="foo3" name="foo" type="checkbox" th:field="*{seatNo}" th:value="A3"></td>
+        <td align="center"><input id="admin_A2" name="foo" type="checkbox" th:field="*{seatNo}" th:value="A3"></td>
       </tr>
       <tr>
         <td align="center">B1</td>
         <td>Available</td>
-        <td align="center"><input id="foo4" name="foo" type="checkbox" th:field="*{seatNo}" th:value="B1"></td>
+        <td align="center"><input id="A4" name="foo" type="checkbox" th:field="*{seatNo}" th:value="B1"></td>
       </tr>
       <tr>
         <td align="center">B2</td>
@@ -423,7 +423,7 @@
     <br>
 
 
-    <input type="submit" value="Submit" />
+    <input type="submit" value="Submit" id="submit"/>
   </form>
 <script language="JavaScript">
 
