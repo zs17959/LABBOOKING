@@ -67,7 +67,7 @@
             <td th:text="${booking.oscilloscope_trim}"> </td>
             <td th:text="${booking.attendance}"> </td>
             <td th:text="${booking.notes}"></td>
-            <td> <a th:href="@{'http://129.213.98.201/bookings/' + ${booking.id} + '/dlt'}" > Delete </a> </td>
+            <td> <a th:href="@{'http://localhost:8080/bookings/' + ${booking.id} + '/dlt'}" > Delete </a> </td>
         </tr>
     </table>
 </div>

@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
+//Entity which maps to the database table column 
 @Entity @Table(name = "booking")
 public class Booking {
     @Id @GeneratedValue @Column(name="id")

@@ -1,3 +1,12 @@
+/*
+LAB BOOKING AND ATTENDANCE - SPE 2018/19
+This file is the controller file for the student and their actions which do not
+include booking functionality.
+This file is where the logic for the functions happens. It makes use of the file
+StudentService, which is how it talks to the database and entities.
+*/
+
+
 package com.dhammatorn.Controller;
 
 import com.dhammatorn.Entity.Student;
@@ -24,17 +33,18 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 
-//Rest deals with HTTP requests and the web - to - database controller
 @Controller
-//request mapping means it is the end of URL (e.g. /smth)
 @RequestMapping("/")
 public class StudentController {
 
-    //get all of student service
     @Autowired
-    //Autowired means springboot will instantiate the injection automatically
     private StudentService studentService;
 
+    /*
+    The index function.
+    Returns the index page when the path "/" is
+    requested.
+    */
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView();
@@ -42,7 +52,11 @@ public class StudentController {
         return modelAndView;
     }
 
-    // Login
+    /*
+    The login funciton.
+    Returns the login page which has a HTML form when the
+    path "/login" is requested.
+    */
     @RequestMapping(value={"/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
@@ -50,8 +64,13 @@ public class StudentController {
         return modelAndView;
     }
 
-
-
+    /*
+    This is the modified user index page which is displayed once a user logs in.
+    The URL here is "/loggedinindex" and any page which can only be accessed
+    by a logged in user the 'return to home' function would return this page,
+    not the normal index.
+    Returns model and view of "loggedinindex" page.
+    */
     @RequestMapping(value="/loggedinindex", method = RequestMethod.GET)
     public ModelAndView loggedinindex(){
         ModelAndView modelAndView = new ModelAndView();
@@ -66,7 +85,10 @@ public class StudentController {
 
 
 
-    // Updated Registration
+    /*
+    The registration get method.
+    Returns a model and view of the registration page.
+    */
     @RequestMapping(value="/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
@@ -76,6 +98,13 @@ public class StudentController {
         return modelAndView;
     }
 
+    /*
+    The registration post method.
+    Here is where the validation for the registration page happens. It checks
+    if the user currently exists and has validation on most of the fields in
+    the registration form.
+    Returns a model and view of the registration page.
+    */
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid Student student, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
@@ -127,29 +156,18 @@ public class StudentController {
         return modelAndView;
     }
 
-    //function to return all students
+    /*
+    This function returns a list of all students.
+    */
     @RequestMapping(value = "/students", method = RequestMethod.GET)
     public @ResponseBody List<Student> getAllStudent() {
         return studentService.getAllStudent();
 
     }
 
-    //value /{id} means we are going to pass an id from the URL and this method is going to output
-    // a student according to that id
-    @RequestMapping(value = "/admin/{id}", method = RequestMethod.GET)
-    //Pathvariable means u actually want the id to be the one you send from the url
-    public @ResponseBody Student getStudentById(@PathVariable("id") int id) {
-        Optional<Student> maybeStudent = studentService.getStudentById(id);
-        if (maybeStudent.isPresent()) {
-            Student student = maybeStudent.get();
-            return student;
-        } else {
-            //error
-            Student student = new Student();
-            return student;
-        }
-    }
-
+    /*
+    A test function, used for testing perposes.
+    */
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     @ResponseBody
     public Student getStudentByUsername() {
@@ -158,7 +176,12 @@ public class StudentController {
     }
 
 
-   // EDIT USER
+    /*
+    Edit user function. This is the get method for edit user.
+    It gets the current logged in user and passes that to the next function via
+    the HTML form.
+    Returns model and view of the edit user page.
+    */
     @RequestMapping(value="/edituser", method = RequestMethod.GET)
     public ModelAndView edituser(){
         ModelAndView modelAndView = new ModelAndView();
@@ -171,6 +194,12 @@ public class StudentController {
         return modelAndView;
     }
 
+    /*
+    Edit user function POST method.
+    Here it updates the student object in the database with what they have
+    entered in the HTML form
+    Returns model and view of the edit user page.
+    */
     @RequestMapping(value = "/edituserpost", method = RequestMethod.POST)
     public RedirectView completeEdituser(@Valid TempStudent student, BindingResult bindingResult) {
 
@@ -190,7 +219,35 @@ public class StudentController {
 
         return new RedirectView("/edit_success");
     }
-    // Delete by Id
+
+    /*
+    ADMIN PAGES
+    Any page here starts with the URL "/admin", which can only be reached
+    by users with the role ADMIN.
+    */
+
+    /*
+    Function for the admin to view any student by ID.
+    Returns the student object.
+    */
+    @RequestMapping(value = "/admin/{id}", method = RequestMethod.GET)
+    public @ResponseBody Student getStudentById(@PathVariable("id") int id) {
+        Optional<Student> maybeStudent = studentService.getStudentById(id);
+        if (maybeStudent.isPresent()) {
+            Student student = maybeStudent.get();
+            return student;
+        } else {
+            //error
+            Student student = new Student();
+            return student;
+        }
+    }
+
+
+    /*
+    Function for the admin to delete any student by ID.
+    Returns the display page.
+    */
     @GetMapping(value = "/admin/{id}/deleteuser")
     @ResponseBody
     public RedirectView deleteUser(@PathVariable("id") int id){
@@ -198,10 +255,10 @@ public class StudentController {
         return new RedirectView("/display");
     }
 
-
-    // ADMIN PAGES
-
-    // Add Strike by Id
+    /*
+    Function for the admin to add a strike to a user by using their ID.
+    Returns the the display page.
+    */
     @GetMapping(value = "/admin/{id}/addstrike")
     @ResponseBody
     public RedirectView addStrike(@PathVariable("id") int id){
@@ -228,6 +285,10 @@ public class StudentController {
 
     }
 
+    /*
+    Function for the admin to remove a strike from a user by using their ID.
+    Returns the the display page.
+    */
     @GetMapping(value = "/admin/{id}/removestrike")
     @ResponseBody
     public RedirectView removeStrike(@PathVariable("id") int id){
@@ -249,40 +310,75 @@ public class StudentController {
         }
     }
 
+    /*
+    Returns adminbooking page.
+    */
     @GetMapping(value = "/admin/booking")
     public String adminbooking(){
         return "adminbooking";
     }
 
+    /*
+    Returns manage account page
+    */
     @GetMapping(value = "/admin/manageaccounts")
     public String manageaccounts(){
         return "manage_account";
     }
 
-    //updated display function
 
+    /*
+    Extra functionality functions, could be admin or normal student access.
+    */
+
+    /*
+    Returns display page.
+    */
     @RequestMapping("/display")
     public String display(Model model){
         model.addAttribute("display", getAllStudent());
         return "display";
     }
 
-
-
+    /*
+    Returns equimpent page.
+    */
     @GetMapping(value = "/equipment")
-    public String equipment(){ return "equipment"; }
+    public String equipment(){
+        return "equipment";
+    }
 
+    /*
+    Returns booking page.
+    */
     @GetMapping(value = "/booking")
-    public String booking(){ return "booking"; }
+    public String booking(){
+        return "booking";
+    }
 
+    /*
+    Returns manage account page.
+    */
     @GetMapping(value = "/manage_account")
-    public String manage_account(){return "manage_account"; }
+    public String manage_account(){
+        return "manage_account";
+    }
 
+    /*
+    Returns error page.
+    */
     @GetMapping(value = "/error")
-    public String error(){return "error"; }
+    public String error(){
+        return "error";
+    }
 
+    /*
+    Returns edit success page.
+    */
     @GetMapping(value="/edit_success")
-    public String edit_success(){return "edit_user_success"; }
+    public String edit_success(){
+        return "edit_user_success";
+    }
 
 
 }

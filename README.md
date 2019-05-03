@@ -1,6 +1,6 @@
 # LAB-BOOKING-ATTENDANCE
 **How to Setup local MYSQL for the web application for Local Testing** 
-MYSQL configurations : follow the table name, user name and password is all on *application.properties* file. Run the application using *springbootLrun* option. (Maven clean install is recommended). Then access the website through [here] (http://localhost:8080)
+MYSQL configurations : follow the table name, user name and password is all on *application.properties* file. Run the application using *springbootLrun* option. (Maven clean install is recommended). Then access the website through [here] (http://localhost:8080) or online (http://129.213.98.201)
 
 Example setup in application.properties 
 

@@ -1,5 +1,13 @@
 package com.dhammatorn.Dao;
 
+/*
+LAB BOOKING AND ATTENDANCE - SPE 2018/19
+This file is the repository file for the student and their actions.
+This file just has a few SQL queries that are required in the StudentService
+file.
+*/
+
+
 import com.dhammatorn.Entity.Student;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.CrudRepository;

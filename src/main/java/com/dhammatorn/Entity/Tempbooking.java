@@ -10,6 +10,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+//Temporary Entity for booking as a user 
 public class Tempbooking{
 
     private int id;

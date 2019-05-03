@@ -34,6 +34,9 @@ import java.util.Optional;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
+/* Controller which connects to both service and repository And the HTML front-end. Includes all of
+the functions related to booking such as display all bookings, add booking for user , delete booking for user,etc.
+*/
 
 @Controller
 @RequestMapping("/bookings")
@@ -45,12 +48,14 @@ public class BookingController {
     //Autowired means springboot will instantiate the injection automatically
     private StudentService studentService;
 
+    //Maps the book link to the HTML page which allows users to book
     @GetMapping("/book")
     public String bookingForm(Model model){
         model.addAttribute("tempbooking", new Tempbooking());
         return "booking";
     }
 
+    //displays the error on booking page if user incorrectly selects the start and end time
     @GetMapping("/length_error")
     public ModelAndView length_error(Tempbooking tempbooking){
         ModelAndView mav = new ModelAndView("bookings/book");
@@ -58,6 +63,7 @@ public class BookingController {
         return mav;
     }
 
+    // Maps attendance to the html attendance HTML page with the Attendance entity
     @RequestMapping(value="/attendance", method = RequestMethod.GET)
     public ModelAndView attendance(){
         ModelAndView modelAndView = new ModelAndView();
@@ -67,6 +73,8 @@ public class BookingController {
         return modelAndView;
     }
 
+    //POST the detail from HTML and Thymeleaf as an object to the service and repository
+    //to update the specific booking via UCARD number
     @RequestMapping(value = "/attendance", method = RequestMethod.POST)
     public String check_attendance(@Valid Attendance attend) {
 
@@ -74,7 +82,8 @@ public class BookingController {
 //        System.out.println("This is ok ! 67");
 
         Student exist = studentService.getStudentByUcard(UCARD_id);
-        if(!exist.getName().equals("-1")){
+        System.out.println(exist.getUsername());
+        if(!exist.getUsername().equals("-1")){
                 Optional<Booking> booked_student = bookingService.getBookingbyStudent(exist.getId());
 
                 if(booked_student.isPresent()) {
@@ -87,7 +96,7 @@ public class BookingController {
                         LocalDateTime startTime = present.getStartTime();
                         LocalDateTime endTime = present.getEndTime();
                         //check if start time and end time is correct
-                        if(now.isBefore(endTime) && now.isAfter(startTime)){
+                        if(now.isBefore(endTime) && now.isAfter(startTime.minusMinutes(10))){
                             present.setAttendance(true);
                             bookingService.updateBookingwithAttendance(present);
                             return "attendance_success";
@@ -115,6 +124,7 @@ public class BookingController {
         }
     }
 
+    //submit booking from the object received by HTML + Thymeleaf
     @PostMapping("/book")
     String bookingSubmit(@ModelAttribute @Valid Tempbooking tempbooking,BindingResult bindingResult,RedirectAttributes redirectAttributes,Model model){
 
@@ -251,12 +261,14 @@ public class BookingController {
 
 
 
+    //get all bookings as a LIST
     @GetMapping("/all")
     @ResponseBody
     public List<Booking> viewAllBookings(){
         return bookingService.getAllBookings();
     }
 
+    //get only a specific user booking history
     public List<Booking> view_onlyUser(){
         List<Booking> user = viewAllBookings();
         List<Booking> to_return = new ArrayList<>();
@@ -273,12 +285,15 @@ public class BookingController {
         return to_return;
     }
 
+    //maps to error HTML
     @GetMapping(value = "/error")
     public String error(){return "error"; }
 
+    //maps to bookingfailed html page
     @GetMapping(value = "/bookingfailed")
     public String booking_failed(){return "bookingfailed";}
 
+    //request and display all bookings
     @RequestMapping("/admin_all_booking")
     public String display(Model model){
         model.addAttribute("admin_all_booking", viewAllBookings());
@@ -290,7 +305,7 @@ public class BookingController {
 //        model.addAttribute("admin_all_booking", viewAllBookings());
 //        return "admin_all_booking";
 //    }
-
+    /* the following maps to error/ success page in HTML */
     @GetMapping(value = "/booking_success")
     public String booking_success(){return "booking_success"; }
 
@@ -321,7 +336,7 @@ public class BookingController {
             return student;
         }
     }
-
+    //display for specific user
     @RequestMapping("/userallbooking")
     public String display_useronly(Model model){
         model.addAttribute("userallbooking", view_onlyUser());
@@ -341,6 +356,7 @@ public class BookingController {
         return new RedirectView("/bookings/admin_all_booking");
     }
 
+    //delete booking for specific user
     @GetMapping(value = "/{id}/delete")
     @ResponseBody
     public RedirectView deleteBookingforUser(@PathVariable("id") int id){
@@ -363,6 +379,7 @@ public class BookingController {
        }
     }
 
+    //change from String to correct data type DayOfWeek
     public DayOfWeek translatorStringtoDOW(String day){
         if(day.equals("MON")) return DayOfWeek.MONDAY;
         else if (day.equals("TUE")) return DayOfWeek.TUESDAY;

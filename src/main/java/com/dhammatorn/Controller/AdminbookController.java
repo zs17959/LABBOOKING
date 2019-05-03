@@ -28,7 +28,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+/*
+~Admin Controller for bookings for ADMIN only and other admin functions such as delete bookings (all) and
+the admin page.
+*/
 @Controller
 @RequestMapping("/admin")
 public class AdminbookController {
@@ -36,17 +39,22 @@ public class AdminbookController {
     @Autowired
     private BookingService bookingService;
 
+    //maps to the index page HTML of admin
     @GetMapping()
     public String adminindex(){
         return "adminindex";
     }
 
+    // maps to the booking function and HTML in admin page
+    // this function also adds the Admin book entity reserved for booking as an admin
+    // it allows seats to be selected as a list instead of string
     @GetMapping("/book")
     public String bookingForm(Model model){
         model.addAttribute("adminbookinfo", new Adminbooking());
         return "adminbooking";
     }
 
+    //for displaying error in length of start and end time
     @GetMapping("/length_error")
     public ModelAndView length_error(Adminbooking tempbooking){
         ModelAndView mav = new ModelAndView("admin/book");
@@ -54,6 +62,8 @@ public class AdminbookController {
         return mav;
     }
 
+    //Function for `POST` mapping in admin HTML page
+    // returns either success or failed page for html
     @PostMapping("/book")
 //    @ResponseBody
     String bookingSubmit(@ModelAttribute @Valid Adminbooking tempbooking, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
@@ -131,7 +141,10 @@ public class AdminbookController {
 
 
     }
-
+    /*
+    error() , booking_failed() and booking_success() maps the controller to the html page
+    for displaying the feedback for the user
+    */
     @GetMapping(value = "/error")
     public String error(){return "error"; }
 
@@ -141,6 +154,7 @@ public class AdminbookController {
     @GetMapping(value = "/booking_success")
     public String booking_success(){return "booking_success"; }
 
+    // translates the day in Book function to correct DayofWeek data type 
     public DayOfWeek translatorStringtoDOW(String day){
         if(day.equals("MON")) return DayOfWeek.MONDAY;
         else if (day.equals("TUE")) return DayOfWeek.TUESDAY;

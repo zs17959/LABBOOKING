@@ -21,6 +21,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Optional;
 
+//the service which maps logic from Controller to the specific function in the Repository + Email service
 @Service
 public class BookingService {
 
@@ -32,6 +33,7 @@ public class BookingService {
     @Autowired
     public StudentService studentService;
 
+    /* The following includes all functions to send email to user when the booking is successful */
     @Autowired
     public BookingService(JavaMailSender javaMailSender){
                 this.javaMailSender = javaMailSender;
@@ -59,6 +61,7 @@ public class BookingService {
 
     }
 
+    //saves specific booking for both user and admin
     public int saveBooking(Booking booking){
         //check if there is any booking on the same date
         List<Booking> bookings = new ArrayList<>();
@@ -106,6 +109,7 @@ public class BookingService {
         }
     }
 
+    //check if the booking does not conflict with any other bookings on the system
     public Boolean timeValid(Booking booking, Booking temp) {
 
 
@@ -161,17 +165,20 @@ public class BookingService {
         bookingRepository.save(booking);
     }
 
+    //validates if the date is correct on the booking
     public Boolean single_date_validation(Booking current, Booking temp){
         if(temp.getStartTime().getDayOfYear() - current.getStartTime().getDayOfYear() > 2) {
             return false;
         }
         else return true;
     }
+    //checks if the booking is on the same week with another
     public Boolean same_week(Booking current, Booking temp){
         if(temp.getStartTime().getDayOfWeek().getValue() - current.getStartTime().getDayOfWeek().getValue() < 5) return true;
         else return false;
     }
 
+    //check if calendar is not a leap year 
     public static boolean isLeapYear(int year) {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, year);

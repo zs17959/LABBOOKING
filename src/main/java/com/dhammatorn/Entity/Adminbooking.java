@@ -10,6 +10,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+//entity for AdminBooking 
 public class Adminbooking {
 
     private int id;
